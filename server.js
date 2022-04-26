@@ -5,6 +5,10 @@ const PORT = 8000;
 
 app.use(express.json());
 
+// mongoDB connection
+import mongoClient from "./src/config/db.js";
+mongoClient();
+
 //load routers
 import taskRouter from "./src/routers/taskRouter.js";
 

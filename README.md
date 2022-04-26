@@ -10,3 +10,7 @@ Here is the link for the frontend app ...
 
 2. User API endpoint
    All the user API will follow the below format`/api/v1/user`
+
+// database connnection
+// table schema
+// query over table/schema
