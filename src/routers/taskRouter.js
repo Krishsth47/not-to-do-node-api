@@ -1,10 +1,20 @@
 import express from "express";
 const router = express.Router();
 
-import { getAllTask, insertTask } from "../models/task/TaskList.model.js";
+import {
+  deleteTask,
+  getAllTask,
+  getTask,
+  insertTask,
+  updateTask,
+} from "../models/task/TaskList.model.js";
 
-router.get("/", async (req, res) => {
-  const result = await getAllTask();
+router.get("/:_id?", async (req, res) => {
+  const { _id } = req.params;
+
+  console.log(_id);
+
+  const result = _id ? await getTask(_id) : await getAllTask();
   res.json({
     status: "success",
     message: "Get method",
@@ -23,9 +33,31 @@ router.post("/", async (req, res) => {
   });
 });
 
-router.delete("/", (req, res) => {
+router.patch("/", async (req, res) => {
+  try {
+    const result = await updateTask(req.body);
+    console.log(result);
+
+    res.json({
+      status: "success",
+      message: "The task has been updated",
+      result,
+    });
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
+});
+
+router.delete("/:_id", async (req, res) => {
+  const { _id } = req.params;
+  const result = await deleteTask(_id);
   res.json({
+    status: "success",
     message: "Delete method",
+    result,
   });
 });
 

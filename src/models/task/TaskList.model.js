@@ -10,4 +10,17 @@ export const getAllTask = () => {
   return TaskListSchema.find();
 };
 
+//find single task
+export const getTask = (_id) => {
+  return TaskListSchema.findById(_id);
+};
+
 // delete data
+export const deleteTask = (_id) => {
+  return TaskListSchema.findByIdAndDelete(_id);
+};
+
+// delete data
+export const updateTask = ({ _id, task }) => {
+  return TaskListSchema.findByIdAndUpdate(_id, { task }, { new: true });
+};
