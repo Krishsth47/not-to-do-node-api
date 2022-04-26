@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const mongoClient = () => {
   try {
-    const conn = mongoose.connect("mongodb://localhose:27017/classA");
+    const conn = mongoose.connect("mongodb://localhost:27017/classA");
 
     if (conn) {
       console.log("MongoDB has been connected");
